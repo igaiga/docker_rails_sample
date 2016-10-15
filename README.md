@@ -127,10 +127,24 @@ http://localhost:3000/ でdocker 内の rails s にアクセス可能
 
 # Docker停止
 
-docker ps で出てくる行の NAMES か CONTAINER ID を指定して止める
+docker ps で出てくる行の NAMES か CONTAINER ID を指定して止める。
 
 - $ docker stop web_1
 - $ docker stop 07630228f60e
 
-docker start はdocker ps -a で見て、同様。
+または以下。この場合、次回起動はcompose up で。
 
+- $ docker-compose down
+
+
+# Docker再起動
+
+docker start。docker ps -a で見て、同様。
+
+または docker-compose up。
+
+- $ docker-compose up
+
+DBコンテナが再生成されるのでスキーマ再作成
+
+- $ docker-compose run web rails db:migrate
